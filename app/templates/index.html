@@ -14,8 +14,9 @@
           <source type="{{ source.mime }}" src="{{ source.url }}" />
           {% endfor %}
         </video>
-        {% comment %}
         {% elif post.kind == "IFRAME" %}
+        <iframe src="{{ post.url }}" frameborder="0" allowfullscreen></iframe>
+        {% comment %}
         {% elif post.kind == "TEXT" %}
         {% endcomment %}
         {% endif %}
