@@ -5,9 +5,9 @@ concept of providing links instead of images cumbersome but still want to look
 at the best cat pictures on the internet.
 
 The data flow in this project basically involves getting posts from reddit with
-PRAW, checking if the link is an image by sending a HEAD request and checking
-the content-type (wrapped in a `functools.lru_cache` so that we don't send too
-many requests) and then serving a 9gagized version of the reddit page with
+PRAW, doing some Reddit Enhancement Suite style checking with multiple content
+providers (youtube, imgur, gfycat, direct image links, ...) to get an embeddable
+version of the link and then serving a 9gagized version of the reddit page with
 embedded images using django.
 
 ### Important notes if you want to run your own version of this project
