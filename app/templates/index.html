@@ -1,11 +1,14 @@
+{% load static %}
 <html>
   <head>
     <title>redditgag - go and have fuck</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/redditgag.css' %}" />
   </head>
   <body>
     <div class="post-container">
     {% for post in posts %}
-      <div class="post">
+      <div class="post well">
         <h3 class="title">
           {{ post.title }}
         </h3>
