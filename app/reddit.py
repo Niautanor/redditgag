@@ -19,6 +19,7 @@ def get_posts(subreddit):
         for provider in providers.modules:
             post = provider.embed(s)
             if post is not None:
-                posts.append(dict(title=s.title, permalink=s.permalink, **post))
+                posts.append(dict(title=s.title, permalink=s.permalink,
+                    author=s.author, subreddit=s.subreddit, **post))
                 break
     return posts

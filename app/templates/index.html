@@ -11,6 +11,9 @@
       <div class="post well">
         <h3 class="title">
           {{ post.title }}
+          <small>
+            submitted by /u/{{ post.author }} to /r/{{ post.subreddit }}
+          </small>
         </h3>
         <div class="post-content">
           {% if post.kind == "IMAGE" %}
