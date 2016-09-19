@@ -20,5 +20,9 @@ from . import plain
 from . import imgur
 from . import youtube
 from . import gfycat
+# this last one is a catch-all to prevent the front page from being empty if
+# nothing was found. It is very important that this comes last in the modules
+# list
+from . import sorry
 
-modules = [plain, imgur, youtube, gfycat]
+modules = [plain, imgur, youtube, gfycat, sorry]
