@@ -12,7 +12,9 @@
         <h3 class="title">
           {{ post.title }}
           <small>
-            submitted by /u/{{ post.author }} to /r/{{ post.subreddit }}
+            submitted by /u/{{ post.author }}
+            {% if print_subreddit %} to /r/{{ post.subreddit }}
+            {% endif %}
           </small>
         </h3>
         <div class="post-content">
