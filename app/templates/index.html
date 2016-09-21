@@ -31,9 +31,10 @@
             <iframe src="{{ post.url }}" frameborder="0" allowfullscreen>
             </iframe>
           </div>
-          {% comment %}
           {% elif post.kind == "TEXT" %}
-          {% endcomment %}
+          <div class="selftext">
+            {{ post.selftext | safe }}
+          </div>
           {% elif post.kind == "SORRY" %}
           <div class="sorry row">
             <div class="sorry-image col-sm-12 col-md-3">

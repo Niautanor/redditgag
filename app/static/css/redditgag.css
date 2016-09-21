@@ -8,6 +8,10 @@
   text-align: center;
 }
 
+.selftext, .sorry-text {
+  text-align: initial;
+}
+
 .post-content > * {
   width: 100%;
 }

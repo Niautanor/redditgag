@@ -16,6 +16,7 @@ for more providers
 This stackoverflow question has some possible plugin systems that I could use
 https://stackoverflow.com/questions/932069/building-a-minimal-plugin-architecture-in-python#932072
 """
+from . import textpost
 from . import plain
 from . import imgur
 from . import youtube
@@ -25,4 +26,4 @@ from . import gfycat
 # list
 from . import sorry
 
-modules = [plain, imgur, youtube, gfycat, sorry]
+modules = [textpost, plain, imgur, youtube, gfycat, sorry]
