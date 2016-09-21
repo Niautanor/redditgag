@@ -19,7 +19,7 @@
         </h3>
         <div class="post-content">
           {% if post.kind == "IMAGE" %}
-          <img src="{{ post.url }}" />
+          <img src="{{ post.url }}" class="post-image" />
           {% elif post.kind == "VIDEO" %}
           <video>
             {% for source in post.video_sources %}
