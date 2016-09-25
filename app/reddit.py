@@ -16,12 +16,11 @@ def get_posts(subreddit):
     #TODO: support other lists (e.g. new, top)
     #TODO: pagination
     submissions = reddit.get_subreddit(subreddit).get_hot(limit=25)
-    posts = []
-    for s in submissions:
-        for provider in providers.modules:
-            post = provider.embed(s)
-            if post is not None:
-                posts.append(dict(title=s.title, permalink=s.permalink,
-                    author=s.author, subreddit=s.subreddit, **post))
-                break
-    return posts
+    return [
+        dict(title=s.title,
+             permalink=s.permalink,
+             author=s.author,
+             subreddit=s.subreddit,
+             **providers.get_embeddable(s))
+        for s in submissions
+    ]

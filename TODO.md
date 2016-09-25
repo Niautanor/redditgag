@@ -3,7 +3,7 @@
 - [ ] add an original-link button that contains the original url
 - [x] just generally more info from the post like name of OP and subreddit
 - [ ] finish imgur and gfycat providers
-  - [ ] since imgur and gfycat both require api's to get all the information, I
+  - [x] since imgur and gfycat both require api's to get all the information, I
     first have to implement some kind of caching system
 
 ## For the not quite so near future
