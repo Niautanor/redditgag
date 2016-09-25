@@ -1,15 +1,18 @@
 ## For the near future
 
-* add an original-link button that contains the original url
-* just generally more info from the post like name of OP and subreddit
-* finish imgur and gfycat providers
+- [ ] add an original-link button that contains the original url
+- [x] just generally more info from the post like name of OP and subreddit
+- [ ] finish imgur and gfycat providers
+  - [ ] since imgur and gfycat both require api's to get all the information, I
+    first have to implement some kind of caching system
 
 ## For the not quite so near future
 
-* find a markdown renderer and add support for self posts
-* propper parameter support for youtube (timestamps, playlists)
-* add a javascript guided tour of the site
+- [x] ~~find a markdown renderer and add support for self posts~~
+  - This was unneccessary because the reddit api already provides rendered html
+- [ ] propper parameter support for youtube (timestamps, playlists)
+- [ ] add a javascript guided tour of the site
 
 ## For the really not anywhere near near future
 
-* reddit login to up and downvote and have personalized frontpage
+- [ ] reddit login to up and downvote and have personalized frontpage
