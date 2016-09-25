@@ -1,5 +1,9 @@
-# this file provides most of the functionality of the application. Reddit posts
-# are retrieved and filtered here.
+"""
+this file provides most of the functionality of the application. Reddit posts
+are retrieved and converted to embeddable objects using the modules from the
+providers package.
+"""
+
 import collections
 import praw
 import re
