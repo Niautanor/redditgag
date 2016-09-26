@@ -19,3 +19,13 @@
 
 - [ ] reddit login to up and downvote and have personalized frontpage
 - [ ] support other sorting methods beside best (e.g. new, top)
+- [ ] rethink the caching thing
+  - The background here is that most of the providers will work with the same
+    schema:
+    1. use a regex to extract an id from a given url and to remove unneeded
+       stuff (like extra parameters, file extensions, etc)
+    2. use an external api to retrieve the object with the extracted id
+    3. use the retrieved object to get embeddable info
+  - Since more than one link can link to a certain object, it might make sense
+    to cache the results of the api accesses (instead of the whole url ->
+    embeddable conversion like it is now)
