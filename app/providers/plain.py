@@ -32,9 +32,9 @@ def embed(submission):
             return None
         return {
             'kind' : 'VIDEO',
-            'sources' : {
+            'sources' : [{
                 'mime' : mime,
                 'url' : submission.url
-                }
-            }
+            }]
+        }
     return None
