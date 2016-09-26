@@ -13,8 +13,6 @@ from . import providers
 reddit = praw.Reddit(user_agent='redditgag - a 9gag like interface to reddit posts by /u/niautanor')
 
 def get_posts(subreddit):
-    #TODO: support other lists (e.g. new, top)
-    #TODO: pagination
     submissions = reddit.get_subreddit(subreddit).get_hot(limit=25)
     return [
         dict(title=s.title,

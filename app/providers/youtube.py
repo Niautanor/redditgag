@@ -14,8 +14,6 @@ cache = 0
 def embed(submission):
     match = youtube_regex.match(submission.url)
     if match is not None:
-        # TODO: detect timestamps (&t=1m30s), start, end and list in the url and
-        # handle them appropriately
         return {
             'kind' : 'IFRAME',
             'url' : "https://www.youtube.com/embed/%s" % match.group(1)
