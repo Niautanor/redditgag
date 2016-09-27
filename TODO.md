@@ -15,7 +15,7 @@
 - [ ] pagination (currently we can only display the top 25 results)
 - [ ] lazy loading (loading embeddables only when the user scrolls to them)
 - [ ] put the navbar into its own template and include it on all pages
-- [ ] figure out if django supports template inheritance and maybe use that too
+- [x] figure out if django supports template inheritance and maybe use that too
 
 ## For the really not anywhere near near future
 

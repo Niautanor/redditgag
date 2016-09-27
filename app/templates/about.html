@@ -1,17 +1,9 @@
-{% load static %}
-<html>
-  <head>
-    <title>redditgag - go and have fuck</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/redditgag.css' %}" />
-  </head>
-  <body>
-    <div class="about-container">
+{% extends 'base.html' %}
+
+{% block content %}
       Redditgag is an application that takes posts from the front page of
       reddit.com and embeds the linked content in an easy to use interface that
       is similar to the one of 9gag.com. The code is open source (licensed under
       AGPLv3) and is available on <a href="https://github.com/Niautanor/redditgag">
       github</a>.
-    </div>
-  </body>
-</html>
+{% endblock %}
