@@ -24,6 +24,7 @@ def get_posts(subreddit, after):
              permalink=s.permalink,
              author=s.author,
              subreddit=s.subreddit,
+             num_comments=s.num_comments,
              **providers.get_embeddable(s))
         for s in submissions
     ], last
