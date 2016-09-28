@@ -25,7 +25,7 @@ def embed(submission):
         # type -> file extension mapping
         if match.group().lower() == 'webm':
             mime = 'video/webm'
-        elif match.group.lower() == 'mp4':
+        elif match.group().lower() == 'mp4':
             mime = 'video/mp4'
         else:
             # something terrible has happened
