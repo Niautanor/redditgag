@@ -7,13 +7,13 @@
     - [ ] add a javascript guided tour of the site
 - front end issues (template)
   - high priority
-    - [ ] mark or hide nsfw posts
     - [ ] add an original-link button that contains the original url
   - medium priority
     - [ ] empty self posts currently display "None" in the text area. Ideally, they
       would indicate that there is no text there.
     - [ ] general prettiness
   - fixed
+    - [x] mark or hide nsfw posts
     - [x] put the navbar into its own template and include it on all pages
     - [x] figure out if django supports template inheritance and maybe use that too
 - providers

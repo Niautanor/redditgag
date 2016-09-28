@@ -13,7 +13,8 @@ def index(request, subreddit=""):
         print_subreddit = False
 
     after = request.GET.get('after', None)
-    posts, last = list(reddit.get_posts(subreddit, after))
+    nsfw = 'nsfw' in request.GET
+    posts, last = list(reddit.get_posts(subreddit, after, nsfw))
 
     context = {
         'posts' : posts,

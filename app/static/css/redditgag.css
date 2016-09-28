@@ -38,3 +38,7 @@
   left: 0;
   top: 0;
 }
+
+.nsfw {
+  color: #cc0000;
+}
