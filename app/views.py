@@ -12,10 +12,13 @@ def index(request, subreddit=""):
     else:
         print_subreddit = False
 
-    posts = reddit.get_posts(subreddit)
+    after = request.GET.get('after', None)
+    posts, last = list(reddit.get_posts(subreddit, after))
+
     context = {
         'posts' : posts,
-        'print_subreddit' : print_subreddit
+        'print_subreddit' : print_subreddit,
+        'last' : last,
     }
 
     return render(request, 'index.html', context)

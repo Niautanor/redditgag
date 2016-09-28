@@ -22,8 +22,6 @@
   - medium priority
     - [ ] proper parameter support for youtube (timestamps, playlists)
 - general back end
-  - high priority
-    - [ ] pagination (currently we can only display the top 25 results)
   - low priority
     - [ ] reddit login to up and downvote and have personalized front page
     - [ ] support other sorting methods beside best (e.g. new, top)
@@ -38,4 +36,5 @@
         to cache the results of the api accesses (instead of the whole url ->
         embeddable conversion like it is now)
   - fixed
+    - [x] pagination (currently we can only display the top 25 results)
     - [x] just generally more info from the post like name of OP and subreddit

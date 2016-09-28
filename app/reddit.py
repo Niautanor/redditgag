@@ -10,10 +10,15 @@ import re
 
 from . import providers
 
-reddit = praw.Reddit(user_agent='redditgag - a 9gag like interface to reddit posts by /u/niautanor')
+reddit = praw.Reddit(user_agent='redditgag - a 9gag like interface to reddit posts by /u/niautanor', log_requests=2)
 
-def get_posts(subreddit):
-    submissions = reddit.get_subreddit(subreddit).get_hot(limit=25)
+def get_posts(subreddit, after):
+    submissions = list(reddit.get_subreddit(subreddit) \
+                             .get_hot(limit=25, params={'after':after}))
+    last = submissions[-1].name
+    # the reddit api actually returns a 'after' field to allow pagination but
+    # praw won't let me access it :/
+
     return [
         dict(title=s.title,
              permalink=s.permalink,
@@ -21,4 +26,4 @@ def get_posts(subreddit):
              subreddit=s.subreddit,
              **providers.get_embeddable(s))
         for s in submissions
-    ]
+    ], last

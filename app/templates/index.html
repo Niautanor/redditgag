@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 
 {% load static %}
+{% load add_get %}
 
 {% block content %}
+    <div class="post-container">
     {% for post in posts %}
       <div class="post well">
         <h3 class="title">
@@ -52,4 +54,8 @@
         </div>
       </div>
     {% endfor %}
+    </div>
+    <div class="controls">
+      <a class="btn btn-default" href="{% add_get after=last %}">next page</a>
+    </div>
 {%endblock %}
