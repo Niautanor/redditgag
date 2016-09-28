@@ -3,7 +3,7 @@ from django.shortcuts import render
 from . import reddit
 
 # Create your views here.
-def index(request, subreddit):
+def index(request, subreddit=""):
     if subreddit == "":
         print_subreddit = True
         subreddit = "all"
