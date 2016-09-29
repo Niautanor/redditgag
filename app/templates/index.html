@@ -6,10 +6,12 @@
 {% block content %}
     <div class="post-container">
     {% for post in posts %}
-      <div class="post well">
+      <div class="post {% if post.hidden %}post-hidden{% endif %} well">
         <h3 class="title">
-          {% if post.nsfw %}
-          <span class="nsfw">[NSFW]</span>
+          {% if post.hidden %}
+          <span class="hidden-marker">
+            [{{ post.hidden }}] (hover to view)
+          </span>
           {% endif %}
           {{ post.title }}
           <small>

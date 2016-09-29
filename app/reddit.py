@@ -25,8 +25,7 @@ def get_posts(subreddit, after, show_nsfw):
              author=s.author,
              subreddit=s.subreddit,
              num_comments=s.num_comments,
-             nsfw=s.over_18,
+             hidden='NSFW' if (s.over_18 and not show_nsfw) else None,
              **providers.get_embeddable(s))
         for s in submissions
-        if not s.over_18 or show_nsfw
     ], last
