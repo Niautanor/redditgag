@@ -1,6 +1,7 @@
 - front end issues (javascript)
   - medium priority
     - [ ] lazy loading (loading embeddables only when the user scrolls to them)
+    - [ ] make videos autoplay (and loop) when the user scrolls to them
     - [ ] auto loading (load new content when the user scrolls to the bottom of
       the page)
   - low priority
@@ -9,6 +10,8 @@
   - high priority
     - [ ] add an original-link button that contains the original url
   - medium priority
+    - [ ] add subreddit selector to navbar (allow selecting show\_nsfw there)
+      - make sure that the url is nsfw=<eggplant emoji>
     - [ ] empty self posts currently display "None" in the text area. Ideally, they
       would indicate that there is no text there.
     - [ ] general prettiness
