@@ -5,9 +5,9 @@ from . import reddit
 # Create your views here.
 def index(request, subreddit=""):
     if subreddit == "":
-        print_subreddit = True
         subreddit = "all"
-    elif "+" in subreddit:
+
+    if subreddit == "all" or "+" in subreddit:
         print_subreddit = True
     else:
         print_subreddit = False
