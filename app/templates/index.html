@@ -46,9 +46,7 @@
             <div class="sorry-text col-sm-12 col-md-9">
               <h6>Sorry</h6>
               <p>
-                I wasn't able to find an embeddable version of
-                <a href="{{ post.url }}">{{ post.url }}</a>. Maybe someone will
-                send the developer a pull request to fix this ;)
+                {{ post.sorrytext }}
               </p>
             </div>
           </div>
@@ -56,6 +54,7 @@
         </div>
         <div class="things">
           <a href="{{ post.permalink }}">{{ post.num_comments }} comments</a>
+          <a href="{{ post.original_url }}">original link</a>
         </div>
       </div>
     {% endfor %}
