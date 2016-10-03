@@ -7,7 +7,7 @@
     <div class="post-container">
     {% for post in posts %}
       <div class="post {% if post.hidden %}post-hidden{% endif %} well">
-        <h3 class="title">
+        <h2 class="title">
           {% if post.hidden %}
           <span class="hidden-marker">
             [{{ post.hidden }}] (hover to view)
@@ -19,7 +19,7 @@
             {% if print_subreddit %} to /r/{{ post.subreddit }}
             {% endif %}
           </small>
-        </h3>
+        </h2>
         <div class="post-content">
           {% if post.kind == "IMAGE" %}
           <img src="{{ post.url }}" class="post-image" />
