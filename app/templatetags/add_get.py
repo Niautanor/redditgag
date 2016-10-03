@@ -48,3 +48,17 @@ def add_get(parser, token):
         s = pair.split('=', 1)
         values[s[0]] = parser.compile_filter(s[1])
     return AddGetParameter(values)
+
+class ToggleNsfw(Node):
+    def render(self, context):
+        req = Variable('request').resolve(context)
+        params = req.GET.copy()
+        if 'nsfw' in params:
+            del params['nsfw']
+        else:
+            params['nsfw'] = '🍆'
+        return '?%s' % params.urlencode()
+
+@register.tag
+def toggle_nsfw(parser, token):
+    return ToggleNsfw()
