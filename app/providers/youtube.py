@@ -7,7 +7,7 @@ particular) come from the Reddit Enhancement Suite
 
 import re
 
-youtube_regex = re.compile(r'^https?:\/\/(?:youtu\.be|(?:www\.|m\.)?youtube\.com)\/?(?:watch|embed)?(?:.*\?v=|v\/|\/)([\w-]+)', re.IGNORECASE)
+youtube_regex = re.compile(r'^https?://(?:youtu\.be|(?:www\.|m\.)?youtube\.com)/?(?:watch|embed)?(?:.*\?v=|v/|/)([\w-]+)', re.IGNORECASE)
 
 cache = 0
 
