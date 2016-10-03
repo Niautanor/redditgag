@@ -23,6 +23,7 @@ from django.core.cache import cache
 
 from . import textpost
 from . import plain
+from . import reddituploads
 from . import imgur
 from . import youtube
 from . import gfycat
@@ -31,7 +32,7 @@ from . import gfycat
 # list
 from . import sorry
 
-modules = [textpost, plain, imgur, youtube, gfycat, sorry]
+modules = [textpost, plain, reddituploads, imgur, youtube, gfycat, sorry]
 
 def get_embeddable(submission):
     # first try to get the thing from the cache
