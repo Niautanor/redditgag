@@ -1,4 +1,4 @@
-from django.template import Library, Node, resolve_variable
+from django.template import Library, Node, Variable
 
 register = Library()
 
@@ -32,14 +32,13 @@ This version was taken from here: https://djangosnippets.org/snippets/2428/
 class AddGetParameter(Node):
     def __init__(self, values):
         self.values = values
-        
+
     def render(self, context):
-        req = resolve_variable('request', context)
+        req = Variable('request').resolve(context)
         params = req.GET.copy()
         for key, value in self.values.items():
             params[key] = value.resolve(context)
         return '?%s' %  params.urlencode()
-
 
 @register.tag
 def add_get(parser, token):
