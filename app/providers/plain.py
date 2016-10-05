@@ -8,8 +8,6 @@ import re
 image_regex = re.compile(r'^[^?]+\.(png|jpe?g|gif)(?:\?.*)?$', re.IGNORECASE)
 video_regex = re.compile(r'^[^?]+\.(webm|mp4)(?:\?.*)?$', re.IGNORECASE)
 
-cache = 0
-
 def embed(submission):
     # img tags don't require a type so we can take a shortcut here
     if image_regex.search(submission.url):

@@ -6,8 +6,6 @@ basically and I hope that it stays that way for the future.
 
 import re
 
-cache = 0
-
 reddituploads_regex = re.compile(r'^https?://(?:i\.)?reddituploads\.com/.+')
 
 def embed(submission):

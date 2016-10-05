@@ -8,43 +8,47 @@ Maybe later someone will implement caption display and this will be changed to
 also send api requests for direct links
 """
 
-import re, requests
-from pprint import pprint
+import re
 
-# cache for a day
-#cache = 24 * 60 * 60
-cache = 0
+from .. import rest
+from requests.exceptions import RequestException
 
 domain = r'^https?://(?:i\.|m\.|www\.)?imgur\.com'
 domain_regex = re.compile(domain, re.IGNORECASE)
 imgur_regex = re.compile(domain + r'\/(\w{5}|\w{7})(?:\.gifv)?(?:\?.*)?$', re.IGNORECASE)
 
 #api.imgur.com for documentation
-imgur_api = r'https://api.imgur.com/3/image/%s.json'
-
 client_id = '1d8d9b36339e0e2'
+imgur_api = rest.Rest( "https://api.imgur.com/3/image/%s.json", 24 * 60 * 60,
+        headers={
+            'Authorization' : "CLIENT-ID %s" % client_id
+        })
 
 def embed(submission):
     match = imgur_regex.search(submission.url)
     if match is not None:
         print("Getting imgur info for id %s" % match.group(1))
 
-        info = requests.get(imgur_api % match.group(1), headers={
-            'Authorization' : "Client-ID %s" % client_id
-        }).json()['data']
+        try:
+            info = imgur_api.get(match.group(1))['data']
 
-        if 'mp4' in info:
+            if 'mp4' in info:
+                return {
+                    'kind' : 'VIDEO',
+                    'sources' : [{
+                        'mime' : 'video/mp4',
+                        'url' : info['mp4']
+                    }]
+                }
+            else:
+                return {
+                    'kind' : 'IMAGE',
+                    'url' : info['link']
+                }
+        except RequestException as e:
             return {
-                'kind' : 'VIDEO',
-                'sources' : [{
-                    'mime' : 'video/mp4',
-                    'url' : info['mp4']
-                }]
-            }
-        else:
-            return {
-                'kind' : 'IMAGE',
-                'url' : info['link']
+                'kind' : 'SORRY',
+                'sorrytext' : "There was an error when accessing the imgur api. The error code was %s" % str(e)
             }
     elif domain_regex.search(submission.url) is not None:
         print("fuck %s" % submission.url)

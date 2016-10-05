@@ -35,18 +35,7 @@ from . import sorry
 modules = [textpost, plain, reddituploads, imgur, youtube, gfycat, sorry]
 
 def get_embeddable(submission):
-    # first try to get the thing from the cache
-    # TODO: the cache works with urls but the actual providers expect a reddit
-    # submission which has more info. Because the sorry and textpost providers
-    # are the only ones that make use of this information and don't cache
-    # anything, this works well but I still think it's a bit ugly.
-    embeddable = cache.get(submission.url)
-    if embeddable is not None:
-        return embeddable
-    # if the thing wasn't found, resolve it
     for module in modules:
         embeddable = module.embed(submission)
         if embeddable is not None:
-            if module.cache > 0:
-                cache.set(submission.url, embeddable, module.cache)
             return embeddable
