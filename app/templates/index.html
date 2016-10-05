@@ -24,7 +24,7 @@
           {% if post.kind == "IMAGE" %}
           <img src="{{ post.url }}" class="post-image" />
           {% elif post.kind == "VIDEO" %}
-          <video autoplay loop muted>
+          <video autoplay loop muted controls>
             {% for source in post.sources %}
             <source type="{{ source.mime }}" src="{{ source.url }}" />
             {% endfor %}
