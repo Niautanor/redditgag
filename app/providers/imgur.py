@@ -19,10 +19,12 @@ imgur_regex = re.compile(domain + r'\/(\w{5}|\w{7})(?:\.gifv)?(?:\?.*)?$', re.IG
 
 #api.imgur.com for documentation
 client_id = '1d8d9b36339e0e2'
-imgur_api = rest.Rest( "https://api.imgur.com/3/image/%s.json", 24 * 60 * 60,
-        headers={
-            'Authorization' : "CLIENT-ID %s" % client_id
-        })
+endpoint = "https://api.imgur.com/3/image/%s.json"
+headers = {
+    'Authorization' : "CLIENT-ID %s" % client_id
+}
+
+imgur_api = rest.Rest(endpoint, 24 * 60 * 60, headers=headers)
 
 def embed(submission):
     match = imgur_regex.search(submission.url)
