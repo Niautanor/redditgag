@@ -14,11 +14,6 @@
           </span>
           {% endif %}
           {{ post.title }}
-          <small>
-            submitted by /u/{{ post.author }}
-            {% if print_subreddit %} to /r/{{ post.subreddit }}
-            {% endif %}
-          </small>
         </h2>
         <div class="post-content">
           {% if post.kind == "IMAGE" %}
@@ -52,9 +47,23 @@
           </div>
           {% endif %}
         </div>
-        <div class="things">
-          <a href="{{ post.permalink }}">{{ post.num_comments }} comments</a>
-          <a href="{{ post.original_url }}">original link</a>
+        <div class="row things">
+          <small class="col-md-6">
+            submitted by <b>/u/{{ post.author }}</b>
+            {% if print_subreddit %} to <b>/r/{{ post.subreddit }}</b>
+            {% endif %}
+          </small>
+          <div class="col-md-6 text-right">
+            <a href="{{ post.permalink }}">
+             <button type="button" class="btn btn-default">
+               <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> {{ post.num_comments }}
+             </button></a>
+            <a href="{{ post.original_url }}">
+             <button type="button" class="btn btn-default">
+               <span class="glyphicon glyphicon-link" aria-hidden="true"></span> Source
+             </button>
+            </a>
+          </div>
         </div>
       </div>
     {% endfor %}
