@@ -6,4 +6,15 @@
       is similar to the one of 9gag.com. The code is open source (licensed under
       AGPLv3) and is available on <a href="https://github.com/Niautanor/redditgag">
       github</a>.
+
+
+      <h4>The following table shows the domain of side where Redditgag support is missing.</h4>
+      <b>Sorted by priority</b>
+      <table class="table">
+      <tr><th>Domain</th><th>Number unresolved requests</th></tr>
+      <!-- include table content here -->
+      {% for domain, count in domains %}
+      	<tr><td>{{ domain }}</td><td>{{ count }}</td></tr>
+      {% endfor %}
+      </table>
 {% endblock %}

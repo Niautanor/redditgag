@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 
 from . import reddit
+from .providers import sorry
 
 # Create your views here.
 def index(request, subreddit=""):
@@ -31,4 +32,4 @@ def index(request, subreddit=""):
     return JsonResponse(context)
 
 def about(request):
-    return render(request, 'about.html', {})
+    return render(request, 'about.html', {'domains' : sorry.get_unsupported_domains()})
