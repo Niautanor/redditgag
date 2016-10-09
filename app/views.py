@@ -5,6 +5,11 @@ from . import reddit
 
 # Create your views here.
 def index(request, subreddit=""):
+    # default set is html (None)
+    # return html fast
+    if request.GET.get('content_type', None) is None:
+        return render(request, 'index.html', {})
+
     if subreddit == "":
         subreddit = "all"
 
@@ -14,8 +19,6 @@ def index(request, subreddit=""):
         print_subreddit = False
 
     after = request.GET.get('after', None)
-    # default set is html (None)
-    content_type = request.GET.get('content_type', None)
     nsfw = 'nsfw' in request.GET
     posts, last = list(reddit.get_posts(subreddit, after, nsfw))
 
@@ -25,11 +28,7 @@ def index(request, subreddit=""):
         'last' : last,
     }
 
-    if content_type == 'json':
-        return JsonResponse(context)
-
-    # normal http response
-    return render(request, 'index.html', context)
+    return JsonResponse(context)
 
 def about(request):
     return render(request, 'about.html', {})
