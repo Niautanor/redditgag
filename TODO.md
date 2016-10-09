@@ -2,10 +2,11 @@
   - medium priority
     - [ ] lazy loading (loading embeddables only when the user scrolls to them)
     - [ ] make videos autoplay (and loop) when the user scrolls to them
-    - [ ] auto loading (load new content when the user scrolls to the bottom of
       the page)
   - low priority
     - [ ] add a javascript guided tour of the site
+  - fixed
+    - [x] auto loading (load new content when the user scrolls to the bottom of
 - front end issues (template)
   - high priority
     - [ ] add an original-link button that contains the original url
@@ -27,6 +28,10 @@
     - [ ] imgur album support
 - general back end
   - low priority
+    - [ ] gather run time statistics of unembeddable things and display them on
+      the about page.
+      - this can be implemented very easily with a dictionary in providers.sorry
+        since I already extract the domain name from the url
     - [ ] reddit login to up and downvote and have personalized front page
     - [ ] support other sorting methods beside best (e.g. new, top)
     - [ ] rethink the caching thing
