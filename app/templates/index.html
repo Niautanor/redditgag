@@ -4,62 +4,6 @@
 {% load add_get %}
 
 {% block content %}
-    <div class="post-container">
-    {% for post in posts %}
-      <div class="post {% if post.hidden %}post-hidden{% endif %} well">
-        <h2 class="title">
-          {% if post.hidden %}
-          <span class="hidden-marker">
-            [{{ post.hidden }}] (hover to view)
-          </span>
-          {% endif %}
-          {{ post.title }}
-          <small>
-            submitted by /u/{{ post.author }}
-            {% if print_subreddit %} to /r/{{ post.subreddit }}
-            {% endif %}
-          </small>
-        </h2>
-        <div class="post-content">
-          {% if post.kind == "IMAGE" %}
-          <img src="{{ post.url }}" class="post-image" />
-          {% elif post.kind == "VIDEO" %}
-          <video autoplay loop muted controls>
-            {% for source in post.sources %}
-            <source type="{{ source.mime }}" src="{{ source.url }}" />
-            {% endfor %}
-          </video>
-          {% elif post.kind == "IFRAME" %}
-          <div class="aspect-ratio">
-            <iframe src="{{ post.url }}" frameborder="0" allowfullscreen>
-            </iframe>
-          </div>
-          {% elif post.kind == "TEXT" %}
-          <div class="selftext">
-            {{ post.selftext | safe }}
-          </div>
-          {% elif post.kind == "SORRY" %}
-          <div class="sorry row">
-            <div class="sorry-image col-sm-12 col-md-3">
-              <img src="{% static 'img/sorry.svg' %}" />
-            </div>
-            <div class="sorry-text col-sm-12 col-md-9">
-              <h6>Sorry</h6>
-              <p>
-                {{ post.sorrytext }}
-              </p>
-            </div>
-          </div>
-          {% endif %}
-        </div>
-        <div class="things">
-          <a href="{{ post.permalink }}">{{ post.num_comments }} comments</a>
-          <a href="{{ post.original_url }}">original link</a>
-        </div>
-      </div>
-    {% endfor %}
-    </div>
-    <div class="controls">
-      <a class="btn btn-default" href="{% add_get after=last %}">next page</a>
-    </div>
-{%endblock %}
+    <div class="post-container"></div>
+    <div id="loading-animation"></div>
+{% endblock %}

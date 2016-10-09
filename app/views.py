@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 
 from . import reddit
 
@@ -13,6 +14,8 @@ def index(request, subreddit=""):
         print_subreddit = False
 
     after = request.GET.get('after', None)
+    # default set is html (None)
+    content_type = request.GET.get('content_type', None)
     nsfw = 'nsfw' in request.GET
     posts, last = list(reddit.get_posts(subreddit, after, nsfw))
 
@@ -22,6 +25,14 @@ def index(request, subreddit=""):
         'last' : last,
     }
 
+    if content_type == 'json':
+        # make Subreddit and Reddiator serilazible
+        for post in posts:
+            post['subreddit'] = str(post['subreddit'])
+            post['author'] = str(post['author'])
+        return JsonResponse(context)
+
+    # normal http response
     return render(request, 'index.html', context)
 
 def about(request):

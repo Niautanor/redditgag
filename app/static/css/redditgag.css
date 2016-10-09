@@ -50,3 +50,7 @@
 .post-hidden:hover > .post-content {
   display: initial;
 }
+
+.things {
+  padding-top: 5px;
+}

@@ -1,11 +1,14 @@
 {% load static %}
 {% load add_get %}
+<!DOCTYPE HTML>
 <html>
   <head>
     <title>redditgag - go and have fuck</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}" />
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
     <link rel="stylesheet" href="{% static 'css/redditgag.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/loading.css' %}" />
+    <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
   </head>
   <body>
@@ -40,5 +43,6 @@
     {% block content %}
     {% endblock %}
     </div>
+    <script src="{% static 'js/redditgag.js' %}"></script>
   </body>
 </html>
