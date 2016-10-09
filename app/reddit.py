@@ -10,7 +10,7 @@ import re
 
 from . import providers
 
-reddit = praw.Reddit(user_agent='redditgag - a 9gag like interface to reddit posts by /u/niautanor', log_requests=2)
+reddit = praw.Reddit(user_agent='redditgag - a 9gag like interface to reddit posts by /u/niautanor', log_requests=2, cache_timeout=120)
 
 def get_posts(subreddit, after, show_nsfw):
     submissions = list(reddit.get_subreddit(subreddit) \

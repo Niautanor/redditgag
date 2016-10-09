@@ -5,7 +5,7 @@ directly (as plain files)
 
 import re
 
-image_regex = re.compile(r'^[^?]+\.(png|jpe?g|gif)(?:\?.*)?$', re.IGNORECASE)
+image_regex = re.compile(r'^[^?]+\.(svg|png|jpe?g|gif)(?:\?.*)?$', re.IGNORECASE)
 video_regex = re.compile(r'^[^?]+\.(webm|mp4)(?:\?.*)?$', re.IGNORECASE)
 
 def embed(submission):
