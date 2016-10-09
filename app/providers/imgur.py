@@ -24,7 +24,7 @@ headers = {
     'Authorization' : "CLIENT-ID %s" % client_id
 }
 
-imgur_api = rest.Rest(endpoint, 24 * 60 * 60, headers=headers)
+imgur_api = rest.Rest(endpoint, headers=headers)
 
 def embed(submission):
     match = imgur_regex.search(submission.url)

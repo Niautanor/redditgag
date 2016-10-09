@@ -7,8 +7,11 @@ import functools
 import requests
 from django.core.cache import cache
 
+# a week
+DEFAULT_TIMEOUT = 7 * 24 * 60 * 60
+
 class Rest():
-    def __init__(self, endpoint, timeout, **kwargs):
+    def __init__(self, endpoint, timeout=DEFAULT_TIMEOUT, **kwargs):
         """
         Creates a new REST API endpoint.
 

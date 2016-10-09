@@ -8,7 +8,7 @@ gfycat_regex = re.compile(r'^https?:\/\/gfycat.com\/(\w+)(?:\.gif)?', re.IGNOREC
 # for documentation about the API see https://gfycat.com/api and the Reddit
 # Enhancement Suite source code
 # cache for a day
-gfycat_api = rest.Rest("https://gfycat.com/cajax/get/%s", 60 * 60 * 24)
+gfycat_api = rest.Rest("https://gfycat.com/cajax/get/%s")
 
 def embed(submission):
     # extract gfy id from url
