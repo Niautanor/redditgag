@@ -14,7 +14,7 @@ reddit = praw.Reddit(user_agent='redditgag - a 9gag like interface to reddit pos
 
 def get_posts(subreddit, after, show_nsfw):
     submissions = list(reddit.get_subreddit(subreddit) \
-                             .get_hot(limit=25, params={'after':after}))
+                             .get_hot(limit=5, params={'after':after}))
     last = submissions[-1].name
     # the reddit api actually returns a 'after' field to allow pagination but
     # praw won't let me access it :/
