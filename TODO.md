@@ -10,6 +10,8 @@
     - [x] auto loading (load new content when the user scrolls to the bottom of
 - front end issues (template)
   - medium priority
+    - [ ] add attribution info (name of website / author on webiste) from
+      provider (e.g. for deviantart). Possibly with a small icon of the website.
     - [ ] empty self posts currently display "None" in the text area. Ideally, they
       would indicate that there is no text there.
     - [ ] general prettiness
