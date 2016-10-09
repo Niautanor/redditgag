@@ -26,10 +26,6 @@ def index(request, subreddit=""):
     }
 
     if content_type == 'json':
-        # make Subreddit and Reddiator serilazible
-        for post in posts:
-            post['subreddit'] = str(post['subreddit'])
-            post['author'] = str(post['author'])
         return JsonResponse(context)
 
     # normal http response

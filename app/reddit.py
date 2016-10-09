@@ -23,8 +23,8 @@ def get_posts(subreddit, after, show_nsfw):
         dict(title=s.title,
              permalink=s.permalink,
              original_url=s.url,
-             author=s.author,
-             subreddit=s.subreddit,
+             author=s.author.name,
+             subreddit=s.subreddit.display_name,
              num_comments=s.num_comments,
              hidden='NSFW' if (s.over_18 and not show_nsfw) else None,
              **providers.get_embeddable(s))
