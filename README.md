@@ -35,7 +35,7 @@ want to know what they do, [go](https://pip.pypa.io/en/stable/)
 environment that contains all required libraries and utilities that are needed
 to run the server).
 
-    virtualenv venv
+    virtualenv venv -p python3
     source venv/bin/activate
     pip install -r requirements.txt
     pip install nodeenv
