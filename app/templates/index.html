@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="{% static 'redditgag/css/redditgag.css' %}" />
     <link rel="stylesheet" href="{% static 'redditgag/css/loading.css' %}" />
     <script src="{% static 'handlebars/handlebars.runtime.js' %}"></script>
-    <script src="{% static 'redditgag/js/handlebars-helpers.js' %}"></script>
-    <script src="{% static 'redditgag/js/redditgag.js' %}"></script>
+    <script src="{% static 'redditgag/coffee/handlebars-helpers.coffee'|compile %}"></script>
+    <script src="{% static 'redditgag/coffee/redditgag.coffee'|compile %}"></script>
     <script src="{% static 'redditgag/handlebars/posts.handlebars'|compile %}"></script>
 {% endblock %}
 

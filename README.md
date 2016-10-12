@@ -40,7 +40,7 @@ to run the server).
     pip install -r requirements.txt
     pip install nodeenv
     nodeenv -p
-    npm install -g bower handlebars
+    npm install -g bower handlebars coffee-script
 
 #### Tell Django to set itself up
 
