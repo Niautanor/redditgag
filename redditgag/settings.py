@@ -56,7 +56,7 @@ BOWER_INSTALLED_APPS = (
     'handlebars',
 )
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
