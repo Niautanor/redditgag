@@ -6,7 +6,7 @@ from urllib.parse import urlparse
 import operator
 
 SORRY_TEMPLATE = """
-There currently isn't a way to embed this link from the domain %s.
+There currently isn't a way to embed this link from the domain <a href="%s">%s</a>.
 Maybe someone will send the developer a pull request to fix this ;)
 """
 # contains a mapping of domains to a set of urls (belonging to this domain)
@@ -23,7 +23,7 @@ def embed(submission):
 
     return {
         'kind' : 'SORRY',
-        'sorrytext' : SORRY_TEMPLATE % domain
+        'sorrytext' : SORRY_TEMPLATE % (submission.url, domain)
     }
 
 # sort the dict by values and returns it
