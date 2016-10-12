@@ -38,9 +38,13 @@ to run the server).
     virtualenv venv
     source venv/bin/activate
     pip install -r requirements.txt
+    pip install nodeenv
+    nodeenv -p
+    npm install -g bower
 
 #### Tell Django to set itself up
 
+    python manage.py bower install
     python manage.py migrate
 
 #### Run the server
