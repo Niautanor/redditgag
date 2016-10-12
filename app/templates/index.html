@@ -1,7 +1,17 @@
 {% extends "base.html" %}
 
 {% load static %}
+{% load compile_static %}
 {% load add_get %}
+
+{% block additional_head %}
+    <link rel="stylesheet" href="{% static 'redditgag/css/redditgag.css' %}" />
+    <link rel="stylesheet" href="{% static 'redditgag/css/loading.css' %}" />
+    <script src="{% static 'handlebars/handlebars.runtime.js' %}"></script>
+    <script src="{% static 'redditgag/js/handlebars-helpers.js' %}"></script>
+    <script src="{% static 'redditgag/js/redditgag.js' %}"></script>
+    <script src="{% static 'redditgag/handlebars/posts.handlebars'|compile %}"></script>
+{% endblock %}
 
 {% block content %}
     <div class="post-container"></div>
