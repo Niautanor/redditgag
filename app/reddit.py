@@ -19,14 +19,4 @@ def get_posts(subreddit, after, show_nsfw):
     # the reddit api actually returns a 'after' field to allow pagination but
     # praw won't let me access it :/
 
-    return [
-        dict(title=s.title,
-             permalink=s.permalink,
-             original_url=s.url,
-             author=s.author.name,
-             subreddit=s.subreddit.display_name,
-             num_comments=s.num_comments,
-             hidden='NSFW' if (s.over_18 and not show_nsfw) else None,
-             **providers.get_embeddable(s))
-        for s in submissions
-    ], last
+    return [ (providers.get_embeddable(s, show_nsfw)) for s in submissions], last

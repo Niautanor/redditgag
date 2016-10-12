@@ -9,6 +9,9 @@ import re
 from .. import rest
 from requests.exceptions import RequestException
 
+name = "deviantart"
+icon = "http://i.deviantart.net/icons/da_favicon.ico"
+
 deviantart_regex = re.compile(r'^https?://(?:fav\.me/.*|sta\.sh/.*|(?:.+\.)?deviantart.com/(?:art/.*|[^#]*#/d.*))$', re.IGNORECASE)
 image_regex = re.compile(r'\.(?:jpe?g|gif|png|svg)$', re.IGNORECASE)
 deviantart_api = rest.Rest("https://backend.deviantart.com/oembed?url=%s")

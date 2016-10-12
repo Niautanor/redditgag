@@ -3,6 +3,9 @@ import re
 from .. import rest
 from requests.exceptions import RequestException
 
+name = "gfycat"
+icon = "https://gfycat.com/favicon2.ico"
+
 gfycat_regex = re.compile(r'^https?:\/\/gfycat.com\/(\w+)(?:\.gif)?', re.IGNORECASE)
 
 # for documentation about the API see https://gfycat.com/api and the Reddit

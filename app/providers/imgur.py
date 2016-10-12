@@ -13,6 +13,9 @@ import re
 from .. import rest
 from requests.exceptions import RequestException
 
+name = "imgur"
+icon = "https://s.imgur.com/images/favicon-32x32.png"
+
 domain = r'^https?://(?:i\.|m\.|www\.)?imgur\.com'
 domain_regex = re.compile(domain, re.IGNORECASE)
 imgur_regex = re.compile(domain + r'\/(\w{5}|\w{7})(?:\.gifv)?(?:\?.*)?$', re.IGNORECASE)

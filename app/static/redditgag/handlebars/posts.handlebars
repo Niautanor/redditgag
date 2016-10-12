@@ -60,8 +60,12 @@
              </button></a>
             <a href="{{ original_url }}">
              <button type="button" class="btn btn-default">
-               <span class="glyphicon glyphicon-link" aria-hidden="true">
-               </span> Source
+               {{#if provider_icon}}
+               <img src="{{ provider_icon }}" class="btn-icon">
+               {{else}}
+               <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
+               {{/if}}
+               {{ provider_name }}
              </button>
             </a>
           </div>
