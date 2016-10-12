@@ -15,7 +15,7 @@ Maybe someone will send the developer a pull request to fix this ;)
 unembedded_domains = {}
 
 def embed(submission):
-    domain = urlparse(submission.url).netloc
+    domain = ".".join(urlparse(submission.url).netloc.split(".")[-2:])
 
     # default value will be the empty set.
     unembedded_domains[domain] = unembedded_domains.get(domain, set())
