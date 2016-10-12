@@ -6,6 +6,9 @@ basically and I hope that it stays that way for the future.
 
 import re
 
+name = "reddit"
+icon = "https://www.redditstatic.com/favicon.ico"
+
 reddituploads_regex = re.compile(r'^https?://(?:i\.)?reddituploads\.com/.+')
 
 def embed(submission):

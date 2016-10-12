@@ -10,6 +10,9 @@ import re
 from .. import rest
 from requests.exceptions import RequestException
 
+name = "twitter"
+icon = "https://abs.twimg.com/favicons/favicon.ico"
+
 twitter_regex = re.compile(r'^https?://((m|mobile|www)\.)?twitter\.com.*')
 twitter_tweet_regex = re.compile(r'^https?://((m|mobile|www)\.)?twitter\.com/(#\!/)?\w{1,15}/status/\d+.*', re.IGNORECASE)
 twitter_api = rest.Rest("https://publish.twitter.com/oembed?omit_script=true&url=%s")

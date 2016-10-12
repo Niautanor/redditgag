@@ -54,3 +54,8 @@
 .things {
   padding-top: 5px;
 }
+
+.btn-icon {
+  max-height: 16px;
+  vertical-align:-0.2em;
+}

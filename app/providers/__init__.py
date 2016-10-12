@@ -37,8 +37,17 @@ from . import sorry
 
 modules = [textpost, plain, reddituploads, imgur, youtube, gfycat, deviantart, twitter, sorry]
 
-def get_embeddable(submission):
+def get_embeddable(submission, show_nsfw):
     for module in modules:
         embeddable = module.embed(submission)
         if embeddable is not None:
-            return embeddable
+            return dict(title=submission.title,
+                permalink=submission.permalink,
+                original_url=submission.url,
+                author=submission.author.name,
+                subreddit=submission.subreddit.display_name,
+                num_comments=submission.num_comments,
+                hidden='NSFW' if (submission.over_18 and not show_nsfw) else None,
+                provider_name=module.__dict__.get('name','source'),
+                provider_icon=module.__dict__.get('icon',False),
+                **embeddable)
