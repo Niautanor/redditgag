@@ -1,0 +1,70 @@
+    {{#each posts}}
+      <div class="post {{#if hidden}}post-hidden{{/if}} well">
+        <h2 class="title">
+          {{#if hidden}}
+          <span class="hidden-marker">
+            [{{ hidden }}] (hover to view)
+          </span>
+          {{/if}}
+          {{ title }}
+        </h2>
+        <div class="post-content">
+          {{#switch kind}}
+          {{#case "IMAGE"}}
+          <img src="{{ url }}" class="post-image" />
+          {{/case}}
+          {{#case "VIDEO"}}
+          <video autoplay loop muted controls>
+            {{#each sources}}
+            <source type="{{ mime }}" src="{{ url }}" />
+            {{/each}}
+          </video>
+          {{/case}}
+          {{#case "IFRAME"}}
+          <div class="aspect-ratio">
+            <iframe src="{{ url }}" frameborder="0" allowfullscreen>
+            </iframe>
+          </div>
+          {{/case}}
+          {{#case "TEXT"}}
+          <div class="selftext">
+            {{{ selftext }}}
+          </div>
+          {{/case}}
+          {{#case "SORRY"}}
+          <div class="sorry row">
+            <div class="sorry-image col-sm-12 col-md-3">
+              <img src="/static/redditgag/img/sorry.svg" />
+            </div>
+            <div class="sorry-text col-sm-12 col-md-9">
+              <h6>Sorry</h6>
+              <p>
+                {{ sorrytext }}
+              </p>
+            </div>
+          </div>
+          {{/case}}
+          {{/switch}}
+        </div>
+        <div class="row things">
+          <small class="col-md-6">
+            submitted by <b>/u/{{ author }}</b>
+            {{#if ../print_subreddit}} to <b>/r/{{ subreddit }}</b>
+            {{/if}}
+          </small>
+          <div class="col-md-6 text-right">
+            <a href="{{ permalink }}">
+             <button type="button" class="btn btn-default">
+               <span class="glyphicon glyphicon-comment" aria-hidden="true">
+               </span> {{ num_comments }}
+             </button></a>
+            <a href="{{ original_url }}">
+             <button type="button" class="btn btn-default">
+               <span class="glyphicon glyphicon-link" aria-hidden="true">
+               </span> Source
+             </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    {{/each}}

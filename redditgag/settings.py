@@ -39,11 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'static_precompiler',
     'djangobower',
 ]
 
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'static_precompiler.finders.StaticPrecompilerFinder',
     'djangobower.finders.BowerFinder',
 ]
 
@@ -51,6 +53,7 @@ STATICFILES_FINDERS = [
 BOWER_INSTALLED_APPS = (
     'jquery',
     'bootstrap',
+    'handlebars',
 )
 
 MIDDLEWARE_CLASSES = [
@@ -139,3 +142,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# django-static-precompiler will compile to this directory
+STATIC_PRECOMPILER_ROOT = os.path.join(BASE_DIR, 'static_precompiler')

@@ -5,3 +5,4 @@ redditgag/secret.py
 *.pyc
 venv/
 bower_components/
+static_precompiler/
