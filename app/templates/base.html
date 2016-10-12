@@ -6,10 +6,10 @@
     <title>redditgag - go and have fuck</title>
     <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap-theme.min.css' %}" />
     <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/redditgag.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/loading.css' %}" />
     <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
     <script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    {% block additional_head %}
+    {% endblock %}
   </head>
   <body>
     <nav class="navbar navbar-default">
@@ -43,6 +43,5 @@
     {% block content %}
     {% endblock %}
     </div>
-    <script src="{% static 'js/redditgag.js' %}"></script>
   </body>
 </html>
