@@ -46,6 +46,7 @@ to run the server).
 
     python manage.py bower install
     python manage.py migrate
+    python manage.py createcachetable
 
 #### Run the server
 
