@@ -39,7 +39,15 @@ modules = [textpost, plain, reddituploads, imgur, youtube, gfycat, deviantart, t
 
 def get_embeddable(submission, show_nsfw):
     for module in modules:
-        embeddable = module.embed(submission)
+        try:
+            embeddable = module.embed(submission)
+        except Exception as e:
+            embeddable = {
+                'kind' : 'SORRY',
+                'sorrytext' : """There was an error when getting an embeddable
+                version of the link. It says %s""" % str(e)
+            }
+
         if embeddable is not None:
             return dict(title=submission.title,
                 permalink=submission.permalink,
@@ -47,7 +55,8 @@ def get_embeddable(submission, show_nsfw):
                 author=submission.author.name,
                 subreddit=submission.subreddit.display_name,
                 num_comments=submission.num_comments,
-                hidden='NSFW' if (submission.over_18 and not show_nsfw) else None,
+                hidden='NSFW' if (submission.over_18 and not show_nsfw) \
+                              else None,
                 provider_name=module.__dict__.get('name','source'),
                 provider_icon=module.__dict__.get('icon',False),
                 **embeddable)

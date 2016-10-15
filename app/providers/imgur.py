@@ -11,7 +11,6 @@ also send api requests for direct links
 import re
 
 from .. import rest
-from requests.exceptions import RequestException
 
 name = "imgur"
 icon = "https://s.imgur.com/images/favicon-32x32.png"
@@ -34,26 +33,20 @@ def embed(submission):
     if match is not None:
         print("Getting imgur info for id %s" % match.group(1))
 
-        try:
-            info = imgur_api.get(match.group(1))['data']
+        info = imgur_api.get(match.group(1))['data']
 
-            if 'mp4' in info:
-                return {
-                    'kind' : 'VIDEO',
-                    'sources' : [{
-                        'mime' : 'video/mp4',
-                        'url' : info['mp4']
-                    }]
-                }
-            else:
-                return {
-                    'kind' : 'IMAGE',
-                    'url' : info['link']
-                }
-        except RequestException as e:
+        if 'mp4' in info:
             return {
-                'kind' : 'SORRY',
-                'sorrytext' : "There was an error when accessing the imgur api. The error code was %s" % str(e)
+                'kind' : 'VIDEO',
+                'sources' : [{
+                    'mime' : 'video/mp4',
+                    'url' : info['mp4']
+                }]
+            }
+        else:
+            return {
+                'kind' : 'IMAGE',
+                'url' : info['link']
             }
     elif domain_regex.search(submission.url) is not None:
         print("fuck %s" % submission.url)

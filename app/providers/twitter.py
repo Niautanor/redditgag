@@ -8,7 +8,6 @@ particular) come from the Reddit Enhancement Suite
 import re
 
 from .. import rest
-from requests.exceptions import RequestException
 
 name = "twitter"
 icon = "https://abs.twimg.com/favicons/favicon.ico"
@@ -22,20 +21,13 @@ def embed(submission):
     if match is not None:
         match = twitter_tweet_regex.match(submission.url)
         if match is not None:
-            try:
-                info = twitter_api.get(submission.url)
-                print("Got twitter info for url: %s" % info['url'])
+            info = twitter_api.get(submission.url)
+            print("Got twitter info for url: %s" % info['url'])
 
-                return {
+            return {
                 'kind' : 'TEXT',
                 'selftext' : info['html']
             }
-            except RequestException as e:
-                print(e)
-                return {
-                    'kind' : 'SORRY',
-                    'sorrytext' : 'There was an error when accessing the twitter api.',
-                }
         else:
             return {
                 'kind' : 'SORRY',
