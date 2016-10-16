@@ -57,3 +57,5 @@
   - [ ] create some unit tests to ensure that the correct embeddables are
     returned. This was mostly added to this list because refactoring is scary
     and I don't feel safe unless I have automated regression tests.
+  - [ ] figure out how to log properly. Printing to stdout is apparently frowned
+    upon in an wsgi environment
