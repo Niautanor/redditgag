@@ -55,8 +55,9 @@ You are almost there,
     python manage.py runserver
 
 will start the development server that will provide the application at
-[127.0.0.1:8000/app/](http://127.0.0.1:8000/app/). It will automatically reload
-itself if you change any files so there should be no need to restart it
-manually.
+[127.0.0.1:8000/](http://127.0.0.1:8000/). It will automatically reload itself
+if you change any files so there should be no need to restart it manually
+(however, you do still have to refresh the page in your browser after making
+changes).
 
 If you stop the server, you only have to run the `python manage.py runserver` command again.

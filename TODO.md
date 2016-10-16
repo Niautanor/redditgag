@@ -53,7 +53,8 @@
     - [x] pagination (currently we can only display the top 25 results)
     - [x] just generally more info from the post like name of OP and subreddit
 - general issues
-  - [ ] deploy the application on a publicly accessible server
+  - [x] deploy the application on a publicly accessible server
+    - https://redditgag.baguette.management/
   - [ ] create some unit tests to ensure that the correct embeddables are
     returned. This was mostly added to this list because refactoring is scary
     and I don't feel safe unless I have automated regression tests.
