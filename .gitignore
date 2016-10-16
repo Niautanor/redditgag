@@ -1,6 +1,5 @@
 *.swp
 __pycache__
-db.sqlite3
 redditgag/secret.py
 *.pyc
 venv/

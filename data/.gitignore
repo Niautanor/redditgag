@@ -1,0 +1,4 @@
+# sqlite3 needs write access to the directory containing a database file to be
+# able to write to that database. This is why the database is stored in this
+# semi empty directory
+db.sqlite3
