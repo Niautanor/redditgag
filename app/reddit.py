@@ -13,10 +13,12 @@ from . import providers
 reddit = praw.Reddit(user_agent='redditgag - a 9gag like interface to reddit posts by /u/niautanor', log_requests=2, cache_timeout=120)
 
 def get_posts(subreddit, after, show_nsfw):
-    submissions = list(reddit.get_subreddit(subreddit) \
-                             .get_hot(limit=5, params={'after':after}))
+    fun = reddit.get_front_page if subreddit is None \
+                                else reddit.get_subreddit(subreddit).get_hot
+
+    submissions = list(fun(limit=5, params={'after':after}))
     last = submissions[-1].name
     # the reddit api actually returns a 'after' field to allow pagination but
     # praw won't let me access it :/
 
-    return [ (providers.get_embeddable(s, show_nsfw)) for s in submissions], last
+    return [ providers.get_embeddable(s, show_nsfw) for s in submissions ], last

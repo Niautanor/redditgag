@@ -11,10 +11,7 @@ def index(request, subreddit=""):
     if request.GET.get('content_type', None) is None:
         return render(request, 'index.html', {})
 
-    if subreddit == "":
-        subreddit = "all"
-
-    if subreddit == "all" or "+" in subreddit:
+    if subreddit is None or subreddit == "all" or "+" in subreddit:
         print_subreddit = True
     else:
         print_subreddit = False
@@ -32,4 +29,6 @@ def index(request, subreddit=""):
     return JsonResponse(context)
 
 def about(request):
-    return render(request, 'about.html', {'domains' : sorry.get_unsupported_domains()})
+    return render(request, 'about.html', {
+        'domains' : sorry.get_unsupported_domains()
+    })
