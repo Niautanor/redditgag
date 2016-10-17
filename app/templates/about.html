@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
+      <img style="float:left; padding: 0 1em 1em 1em"
+           src="{% static 'redditgag/img/redditgag-alien.png' %}" />
       Redditgag is an application that takes posts from the front page of
       reddit.com and embeds the linked content in an easy to use interface that
       is similar to the one of 9gag.com. The code is open source (licensed under
