@@ -8,6 +8,11 @@
   text-align: center;
 }
 
+.title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .selftext, .sorry-text {
   text-align: initial;
 }
