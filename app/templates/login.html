@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+      <p>
+        Logging in with your Reddit account allows you to browse your own
+        personalized reddit frontpage with all the subreddits you subscribed to
+        here. You can revoke that permission at any time on <a
+          href="https://reddit.com/prefs/apps">your Reddit app preferences
+          page</a>
+      </p>
+
+      {% if 'reddit_oauth' not in request.session %}
+      <p>
+        If this prospect tickles your fancy, you can follow the link below to
+        tell Reddit about it.
+      </p>
+
+      <a href="{{ authorize_url }}">sign me up</a>
+      {% else %}
+      <p>
+        It looks like you are already logged in. If you want to revoke your
+        permission visit the Reddit app preferences link above and click on
+        "revoke access" below the Redditgag logo.
+      </p>
+      <p>
+        After you've done that, just visit the <a href="{% url 'frontpage' %}">
+        front page</a> again. The site will detect it (because Reddit will
+        report an error) and delete your session.
+      </p>
+      {% endif %}
+{% endblock %}

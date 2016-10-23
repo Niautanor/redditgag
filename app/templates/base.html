@@ -36,6 +36,15 @@
               <a href="{% toggle_nsfw %}">toggle nsfw mode</a>
             </li>
           </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              {% if 'reddit_auth' in request.session %}
+              You are logged in (<a style="display:inline" href="{% url 'login' %}">logout</a>)
+              {% else %}
+              <a href="{% url 'login' %}">Log in with Reddit</a>
+              {% endif %}
+            </li>
+          </ul>
           <!-- TODO: create form to input subreddit name (see
             https://getbootstrap.com/components/#navbar -->
         </div>

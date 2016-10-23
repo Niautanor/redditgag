@@ -34,6 +34,7 @@ X_FRAME_OPTIONS = 'DENY'
 INSTALLED_APPS = [
     'app.apps.AppConfig',
     'django.contrib.contenttypes',
+    'django.contrib.sessions',
     'django.contrib.staticfiles',
     'static_precompiler',
     'djangobower',
@@ -54,6 +55,7 @@ BOWER_INSTALLED_APPS = (
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -115,8 +117,12 @@ from .secret import (
         DEBUG,
         ALLOWED_HOSTS,
         SECURE_SSL_REDIRECT,
+        SESSION_COOKIE_SECURE,
         STATIC_ROOT,
         STATIC_PRECOMPILER_DISABLE_AUTO_COMPILE,
+        REDDIT_AUTH_CLIENT_ID,
+        REDDIT_AUTH_CLIENT_SECRET,
+        REDDIT_AUTH_REDIRECT_URI,
 )
 
 # Static files (CSS, JavaScript, Images)
