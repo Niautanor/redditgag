@@ -11,6 +11,9 @@ import praw
 import re
 
 from django.conf import settings
+from django.urls import reverse
+
+from praw.errors import OAuthInvalidToken
 
 from . import providers
 
@@ -40,12 +43,28 @@ def get_posts(subreddit, after, show_nsfw, auth):
     fun = reddit.get_front_page if subreddit is None \
                                 else reddit.get_subreddit(subreddit).get_hot
 
-    submissions = list(fun(limit=5, params={'after':after}))
-    last = submissions[-1].name
-    # the reddit api actually returns a 'after' field to allow pagination but
-    # praw won't let me access it :/
+    try:
+        submissions = list(fun(limit=5, params={'after':after}))
+        last = submissions[-1].name
+        # the reddit api actually returns a 'after' field to allow pagination
+        # but praw won't let me access it :/
 
-    return [ providers.get_embeddable(s, show_nsfw) for s in submissions ], last
+        return [
+            providers.get_embeddable(s, show_nsfw) for s in submissions
+        ], last
+    except OAuthInvalidToken:
+        return [{
+            'title' : 'Reddit Authentication Failure',
+            'author' : 'redditgag',
+            'subreddit' : 'redditgag',
+            'hidden' : None,
+            'kind' : 'SORRY',
+            'sorrytext' : """The Reddit authentication token is invalid. This
+            usually means that you have revoked this apps access in your reddit
+            app preferences but haven't <a href="%s">cleared your session cookie
+            yet</a>. If this isn't the case, I would appreciate it if you
+            reported the issue on github.""" % reverse('logout'),
+        }], -1
 
 def generate_oauth_state():
     """
