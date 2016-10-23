@@ -41,6 +41,10 @@ def login(request):
         'authorize_url' : url,
     })
 
+def logout(request):
+    request.session.flush()
+    return redirect('frontpage')
+
 def auth_redirect(request):
     # TODO: maybe replace these assertions with error messages?
     assert 'oauth_state' in request.session
