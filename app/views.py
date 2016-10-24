@@ -22,7 +22,8 @@ def index(request, subreddit=""):
     posts, last, newauth = reddit.get_posts(subreddit, after, nsfw, auth)
 
     # update the oauth token if it has changed
-    request.session['reddit_auth'] = newauth
+    if auth is not None:
+        request.session['reddit_auth'] = newauth
 
     context = {
         'posts' : posts,
