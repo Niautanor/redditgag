@@ -59,7 +59,7 @@ def get_posts(subreddit, after, show_nsfw, auth):
             'scope' : list(reddit._authentication),
             'access_token' : reddit.access_token,
             'refresh_token' : reddit.refresh_token,
-        }
+        } if auth is not None else None
     except OAuthInvalidToken:
         return [{
             'title' : 'Reddit Authentication Failure',
