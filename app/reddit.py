@@ -33,10 +33,14 @@ def get_posts(subreddit, after, show_nsfw, auth):
     auth is a tuple consisting of a scope, an access token and a refresh token
     from the reddit API that can be used to access private subreddits / the
     personalized front page.
+
+    The function returns a 3-tuple consisting of the list of embeddables, the id
+    of the last retrieved post (used to request the next batch) and the updated
+    auth token (tokens expire after a while and are automatically refreshed by
+    praw)
     """
     if auth is not None:
-        creds = (auth['scope'], auth['access_token'], auth['refresh_token'])
-        reddit.set_access_credentials(*creds)
+        reddit.set_access_credentials(**auth)
     else:
         reddit.clear_authentication()
 
@@ -51,7 +55,11 @@ def get_posts(subreddit, after, show_nsfw, auth):
 
         return [
             providers.get_embeddable(s, show_nsfw) for s in submissions
-        ], last
+        ], last, {
+            'scope' : list(reddit._authentication),
+            'access_token' : reddit.access_token,
+            'refresh_token' : reddit.refresh_token,
+        }
     except OAuthInvalidToken:
         return [{
             'title' : 'Reddit Authentication Failure',
@@ -64,7 +72,7 @@ def get_posts(subreddit, after, show_nsfw, auth):
             app preferences but haven't <a href="%s">cleared your session cookie
             yet</a>. If this isn't the case, I would appreciate it if you
             reported the issue on github.""" % reverse('logout'),
-        }], -1
+        }], -1, auth
 
 def generate_oauth_state():
     """

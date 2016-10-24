@@ -19,7 +19,10 @@ def index(request, subreddit=""):
     after = request.GET.get('after', None)
     auth = request.session.get('reddit_auth', None)
     nsfw = 'nsfw' in request.GET
-    posts, last = list(reddit.get_posts(subreddit, after, nsfw, auth))
+    posts, last, newauth = reddit.get_posts(subreddit, after, nsfw, auth)
+
+    # update the oauth token if it has changed
+    request.session['reddit_auth'] = newauth
 
     context = {
         'posts' : posts,
