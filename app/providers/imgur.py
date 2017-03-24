@@ -17,11 +17,11 @@ icon = "https://s.imgur.com/images/favicon-32x32.png"
 
 domain = r'^https?://(?:i\.|m\.|www\.)?imgur\.com'
 domain_regex = re.compile(domain, re.IGNORECASE)
-imgur_regex = re.compile(domain + r'\/(\w{5}|\w{7})(?:\.gifv)?(?:\?.*)?$', re.IGNORECASE)
+imgur_regex = re.compile(domain + r'\/(?:(album|gallery|a)\/)?(\w{5}|\w{7})(?:\.gifv)?(?:\?.*)?$', re.IGNORECASE)
 
 #api.imgur.com for documentation
 client_id = '1d8d9b36339e0e2'
-endpoint = "https://api.imgur.com/3/image/%s.json"
+endpoint = "https://api.imgur.com/3/%s/%s"
 headers = {
     'Authorization' : "CLIENT-ID %s" % client_id
 }
@@ -31,11 +31,28 @@ imgur_api = rest.Rest(endpoint, headers=headers)
 def embed(submission):
     match = imgur_regex.search(submission.url)
     if match is not None:
-        print("Getting imgur info for id %s" % match.group(1))
+        print("Getting imgur info for id %s" % match.group(2))
 
-        info = imgur_api.get(match.group(1))['data']
+        if match.group(1) == 'gallery':
+            kind = 'gallery'
+        elif match.group(1):
+            kind = 'album'
+        else:
+            kind = 'image'
 
-        if 'mp4' in info:
+        info = imgur_api.get((kind, match.group(2)))['data']
+
+        if 'images' in info:
+            # TODO: catch gifvs that hide in albums
+            return {
+                'kind' : 'ALBUM',
+                'elements' : [{
+                        'kind' : 'IMAGE',
+                        'url' : image['link']
+                    } for image in info['images']
+                ]
+            }
+        elif 'mp4' in info:
             return {
                 'kind' : 'VIDEO',
                 'sources' : [{

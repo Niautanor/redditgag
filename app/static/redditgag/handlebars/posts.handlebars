@@ -1,3 +1,41 @@
+{{#macro "simple-content"}}
+  {{#switch kind}}
+  {{#case "IMAGE"}}
+  <img src="{{ url }}" class="post-image" />
+  {{/case}}
+  {{#case "VIDEO"}}
+  <video loop muted controls>
+    {{#each sources}}
+    <source type="{{ mime }}" src="{{ url }}" />
+    {{/each}}
+  </video>
+  {{/case}}
+  {{#case "IFRAME"}}
+  <div class="aspect-ratio">
+    <iframe src="{{ url }}" frameborder="0" allowfullscreen>
+    </iframe>
+  </div>
+  {{/case}}
+  {{#case "TEXT"}}
+  <div class="selftext">
+    {{{ selftext }}}
+  </div>
+  {{/case}}
+  {{#case "SORRY"}}
+  <div class="sorry row">
+    <div class="sorry-image col-sm-12 col-md-3">
+      <img src="/static/redditgag/img/sorry.svg" />
+    </div>
+    <div class="sorry-text col-sm-12 col-md-9">
+      <h6>Sorry</h6>
+      <p>
+        {{{ sorrytext }}}
+      </p>
+    </div>
+  </div>
+  {{/case}}
+  {{/switch}}
+{{/macro}}
     {{#each posts}}
       <div class="post {{#if hidden}}post-hidden{{/if}} well">
         <h2 class="title">
@@ -9,42 +47,13 @@
           {{ title }}
         </h2>
         <div class="post-content">
-          {{#switch kind}}
-          {{#case "IMAGE"}}
-          <img src="{{ url }}" class="post-image" />
-          {{/case}}
-          {{#case "VIDEO"}}
-          <video autoplay loop muted controls>
-            {{#each sources}}
-            <source type="{{ mime }}" src="{{ url }}" />
+          {{#ifAlbum}}
+            {{#each elements}}
+              {{simple-content}}</br>
             {{/each}}
-          </video>
-          {{/case}}
-          {{#case "IFRAME"}}
-          <div class="aspect-ratio">
-            <iframe src="{{ url }}" frameborder="0" allowfullscreen>
-            </iframe>
-          </div>
-          {{/case}}
-          {{#case "TEXT"}}
-          <div class="selftext">
-            {{{ selftext }}}
-          </div>
-          {{/case}}
-          {{#case "SORRY"}}
-          <div class="sorry row">
-            <div class="sorry-image col-sm-12 col-md-3">
-              <img src="/static/redditgag/img/sorry.svg" />
-            </div>
-            <div class="sorry-text col-sm-12 col-md-9">
-              <h6>Sorry</h6>
-              <p>
-                {{{ sorrytext }}}
-              </p>
-            </div>
-          </div>
-          {{/case}}
-          {{/switch}}
+          {{else}}
+            {{simple-content}}
+          {{/ifAlbum}}
         </div>
         <div class="row things">
           <small class="col-md-6">

@@ -29,7 +29,8 @@
 - providers
   - medium priority
     - [ ] proper parameter support for youtube (timestamps, playlists)
-    - [ ] imgur album support
+    - [x] imgur album support
+    - [ ] tumblr (+album) support
 - general back end
   - low priority
     - [ ] gather run time statistics of unembeddable things and display them on
