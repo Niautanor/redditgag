@@ -28,6 +28,7 @@ class Rest():
         self.endpoint = endpoint
         self.timeout = timeout
         self.kwargs = kwargs
+        self.kwargs.setdefault('timeout', 4)
 
     def get(self, identifier, **kwargs):
         """
