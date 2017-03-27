@@ -28,6 +28,7 @@ from . import imgur
 from . import youtube
 from . import gfycat
 from . import deviantart
+from . import tumblr
 from . import twitter
 # this last one is a catch-all to prevent the front page from being empty if
 # nothing was found. It is very important that this comes last in the modules
@@ -35,7 +36,8 @@ from . import twitter
 from . import sorry
 
 
-modules = [textpost, plain, reddituploads, imgur, youtube, gfycat, deviantart, twitter, sorry]
+
+modules = [textpost, plain, reddituploads, imgur, youtube, gfycat, deviantart, tumblr, twitter, sorry]
 
 def get_embeddable(submission, show_nsfw):
     for module in modules:
