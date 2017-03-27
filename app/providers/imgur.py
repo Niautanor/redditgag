@@ -30,47 +30,46 @@ imgur_api = rest.Rest(endpoint, headers=headers)
 
 def embed(submission):
     match = imgur_regex.search(submission.url)
-    if match is not None:
-        print("Getting imgur info for id %s" % match.group(2))
-
-        if match.group(1) == 'gallery':
-            kind = 'gallery'
-        elif match.group(1):
-            kind = 'album'
-        else:
-            kind = 'image'
-
-        info = imgur_api.get((kind, match.group(2)))['data']
-
-        if 'images' in info:
-            # TODO: catch gifvs that hide in albums
+    if not match:
+        if domain_regex.search(submission.url) is not None:
+            print("fuck %s" % submission.url)
             return {
-                'kind' : 'ALBUM',
-                'elements' : [{
-                        'kind' : 'IMAGE',
-                        'url' : image['link']
-                    } for image in info['images']
-                ]
+                'kind' : 'SORRY',
+                'sorrytext' :
+                    '''Imgur albums are not supported at this time. If this
+                    isn't an album, please send the developer a message'''
             }
-        elif 'mp4' in info:
-            return {
-                'kind' : 'VIDEO',
-                'sources' : [{
-                    'mime' : 'video/mp4',
-                    'url' : info['mp4']
-                }]
-            }
-        else:
-            return {
-                'kind' : 'IMAGE',
-                'url' : info['link']
-            }
-    elif domain_regex.search(submission.url) is not None:
-        print("fuck %s" % submission.url)
+        return None
+
+    print("Getting imgur info for id %s" % match.group(2))
+
+    kind = 'image'
+    if match.group(1) == 'gallery':
+        kind = 'gallery'
+    elif match.group(1):
+        kind = 'album'
+
+    info = imgur_api.get((kind, match.group(2)))['data']
+
+    if 'images' in info:
+        # TODO: catch gifvs that hide in albums
         return {
-            'kind' : 'SORRY',
-            'sorrytext' :
-                '''Imgur albums are not supported at this time. If this
-                isn't an album, please send the developer a message'''
+            'kind' : 'ALBUM',
+            'elements' : [{
+                    'kind' : 'IMAGE',
+                    'url' : image['link']
+                } for image in info['images']
+            ]
         }
-    return None
+    elif 'mp4' in info:
+        return {
+            'kind' : 'VIDEO',
+            'sources' : [{
+                'mime' : 'video/mp4',
+                'url' : info['mp4']
+            }]
+        }
+    return {
+        'kind' : 'IMAGE',
+        'url' : info['link']
+    }

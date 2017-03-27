@@ -25,42 +25,42 @@ tumblr_api = rest.Rest(endpoint, params=params)
 
 def embed(submission):
     match = tumblr_regex.search(submission.url)
-    if match is not None:
-        print("Getting tumblr info for id [%s,%s]" %
-                (match.group(1),match.group(2)))
+    if not match:
+        return None
 
-        posts = tumblr_api.get(match.groups())['response']['posts']
+    print("Getting tumblr info for id [%s,%s]" %
+            (match.group(1),match.group(2)))
 
-        assert len(posts) == 1, "Did not expect more than one tumblr post"
+    posts = tumblr_api.get(match.groups())['response']['posts']
 
-        info = posts[0]
+    assert len(posts) == 1, "Did not expect more than one tumblr post"
 
-        if info['type'] == 'answer':
-            return {
-                'kind' : 'TEXT',
-                'selftext' : info['question'] + "<br />" + info['answer']
-            }
-        elif info['type'] == 'text':
-            from pprint import pprint; pprint(info)
-            return {
-                'kind' : 'TEXT',
-                'selftext' : info['body']
-            }
-        elif info['type'] == 'photo':
-            # TODO: research if there can be other things except images
-            # TODO: debate whether or not it makes sense to return an IMAGE if there
-            # is only one photo (applies to imgur as well)
-            return {
-                'kind' : 'ALBUM',
-                'elements' : [{
-                    'kind' : 'IMAGE',
-                    'url' : photo['original_size']['url']
-                } for photo in info['photos']]
-            }
-        else:
-            return {
-                'kind' : 'SORRY',
-                'sorrytext' :
-                    '''Unsupported tumblr post type %s''' % info['type']
-            }
-    return None
+    info = posts[0]
+
+    if info['type'] == 'answer':
+        return {
+            'kind' : 'TEXT',
+            'selftext' : info['question'] + "<br />" + info['answer']
+        }
+    elif info['type'] == 'text':
+        from pprint import pprint; pprint(info)
+        return {
+            'kind' : 'TEXT',
+            'selftext' : info['body']
+        }
+    elif info['type'] == 'photo':
+        # TODO: research if there can be other things except images
+        # TODO: debate whether or not it makes sense to return an IMAGE if there
+        # is only one photo (applies to imgur as well)
+        return {
+            'kind' : 'ALBUM',
+            'elements' : [{
+                'kind' : 'IMAGE',
+                'url' : photo['original_size']['url']
+            } for photo in info['photos']]
+        }
+    return {
+        'kind' : 'SORRY',
+        'sorrytext' :
+            '''Unsupported tumblr post type %s''' % info['type']
+    }

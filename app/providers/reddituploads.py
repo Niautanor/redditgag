@@ -12,9 +12,10 @@ icon = "https://www.redditstatic.com/favicon.ico"
 reddituploads_regex = re.compile(r'^https?://(?:i\.)?reddituploads\.com/.+')
 
 def embed(submission):
-    if reddituploads_regex.search(submission.url) is not None:
-        return {
-            'kind' : 'IMAGE',
-            'url' : submission.url
-        }
-    return None
+    if not reddituploads_regex.search(submission.url):
+        return None
+
+    return {
+        'kind' : 'IMAGE',
+        'url' : submission.url
+    }

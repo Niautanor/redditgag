@@ -16,20 +16,21 @@ image_regex = re.compile(r'\.(?:jpe?g|gif|png|svg)$', re.IGNORECASE)
 deviantart_api = rest.Rest("https://backend.deviantart.com/oembed?url=%s")
 
 def embed(submission):
-    if deviantart_regex.search(submission.url):
-        info = deviantart_api.get(submission.url)
-        print("Got deviantart info %s" % info['author_name'])
-        if info['type'] != 'photo':
-            return {
-                'kind' : 'SORRY',
-                'sorrytext' : 'Deviant art things other than phot are not supported',
-            }
+    if not deviantart_regex.search(submission.url):
+        return None
 
-        src = info['url'] if image_regex.search(info['url']) \
-                          else info['thumbnail_url']
-
+    info = deviantart_api.get(submission.url)
+    print("Got deviantart info %s" % info['author_name'])
+    if info['type'] != 'photo':
         return {
-            'kind' : 'IMAGE',
-            'url' : src
+            'kind' : 'SORRY',
+            'sorrytext' : 'Deviant art things other than phot are not supported',
         }
-    return None
+
+    src = info['url'] if image_regex.search(info['url']) \
+                      else info['thumbnail_url']
+
+    return {
+        'kind' : 'IMAGE',
+        'url' : src
+    }

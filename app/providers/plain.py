@@ -18,21 +18,22 @@ def embed(submission):
     # video source tags do require a type so we have to check the match to
     # find it
     match = video_regex.search(submission.url)
-    if match is not None:
-        # TODO: the regex could probably be dynamically generated from a mime
-        # type -> file extension mapping
-        if match.group().lower() == 'webm':
-            mime = 'video/webm'
-        elif match.group().lower() == 'mp4':
-            mime = 'video/mp4'
-        else:
-            # something terrible has happened
-            return None
-        return {
-            'kind' : 'VIDEO',
-            'sources' : [{
-                'mime' : mime,
-                'url' : submission.url
-            }]
-        }
-    return None
+    if not match:
+        return None
+
+    # TODO: the regex could probably be dynamically generated from a mime
+    # type -> file extension mapping
+    if match.group().lower() == 'webm':
+        mime = 'video/webm'
+    elif match.group().lower() == 'mp4':
+        mime = 'video/mp4'
+    else:
+        # something terrible has happened
+        return None
+    return {
+        'kind' : 'VIDEO',
+        'sources' : [{
+            'mime' : mime,
+            'url' : submission.url
+        }]
+    }
