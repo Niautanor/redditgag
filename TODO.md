@@ -30,14 +30,17 @@
   - medium priority
     - [ ] proper parameter support for youtube (timestamps, playlists)
     - [x] imgur album support
-    - [ ] tumblr (+album) support
+    - [x] tumblr (+album) support
+    - [ ] better twitter support (show attached images properly)
 - general back end
   - low priority
-    - [ ] gather run time statistics of unembeddable things and display them on
+    - [x] gather run time statistics of unembeddable things and display them on
       the about page.
       - this can be implemented very easily with a dictionary in providers.sorry
         since I already extract the domain name from the url
-    - [ ] reddit login to up and downvote and have personalized front page
+    - [ ] reddit login
+      - [x] personalized front page
+      - [ ] voting
     - [ ] support other sorting methods beside best (e.g. new, top)
   - fixed
     - [x] rethink the caching thing
