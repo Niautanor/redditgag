@@ -23,9 +23,9 @@ def embed(submission):
 
     # TODO: the regex could probably be dynamically generated from a mime
     # type -> file extension mapping
-    if match.group().lower() == 'webm':
+    if match.group(1).lower() == 'webm':
         mime = 'video/webm'
-    elif match.group().lower() == 'mp4':
+    elif match.group(1).lower() == 'mp4':
         mime = 'video/mp4'
     else:
         # something terrible has happened
