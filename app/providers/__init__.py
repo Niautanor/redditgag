@@ -54,7 +54,7 @@ def get_embeddable(submission, show_nsfw):
             return dict(title=submission.title,
                 permalink=submission.permalink,
                 original_url=submission.url,
-                author=submission.author.name,
+                author=submission.author.name if submission.author else  "[deleted]",
                 subreddit=submission.subreddit.display_name,
                 num_comments=submission.num_comments,
                 hidden='NSFW' if (submission.over_18 and not show_nsfw) \
