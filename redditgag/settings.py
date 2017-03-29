@@ -146,3 +146,26 @@ STATIC_PRECOMPILER_FINDER_LIST_FILES = STATIC_PRECOMPILER_DISABLE_AUTO_COMPILE
 
 # django-static-precompiler will compile to this directory
 STATIC_PRECOMPILER_ROOT = os.path.join(BASE_DIR, 'static_precompiler')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'simple': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(message)s'
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+    },
+    'loggers': {
+        'app': {
+            'level': 'INFO',
+            'handlers': ['console'],
+        },
+    },
+}

@@ -5,8 +5,11 @@ For api reference see https://www.deviantart.com/developers/oembed
 """
 
 import re
+import logging
 
 from .. import rest
+
+logger = logging.getLogger(__name__)
 
 name = "deviantart"
 icon = "http://i.deviantart.net/icons/da_favicon.ico"
@@ -20,7 +23,7 @@ def embed(submission, api=deviantart_api.get):
         return None
 
     info = api(submission.url)
-    print("Got deviantart info %s" % info['author_name'])
+    logger.info("Got deviantart info %s", info['author_name'])
     if info['type'] != 'photo':
         return {
             'kind' : 'SORRY',

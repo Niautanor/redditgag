@@ -6,8 +6,11 @@ particular) come from the Reddit Enhancement Suite
 """
 
 import re
+import logging
 
 from .. import rest
+
+logger = logging.getLogger(__name__)
 
 name = "twitter"
 icon = "https://abs.twimg.com/favicons/favicon.ico"
@@ -29,7 +32,7 @@ def embed(submission, api=twitter_api):
         }
 
     info = api.get(submission.url)
-    print("Got twitter info for url: %s" % info['url'])
+    logger.info("Got twitter info for url: %s", info['url'])
 
     return {
         'kind' : 'TEXT',

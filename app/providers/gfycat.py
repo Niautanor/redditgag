@@ -1,6 +1,9 @@
 import re
+import logging
 
 from .. import rest
+
+logger = logging.getLogger(__name__)
 
 name = "gfycat"
 icon = "https://gfycat.com/favicon2.ico"
@@ -19,7 +22,7 @@ def embed(submission, api=gfycat_api.get):
         return None
 
     # get info from gfycat api
-    print("Getting gfycat info")
+    logger.info("Getting gfycat info")
     info = api(match.group(1))['gfyItem']
 
     return {

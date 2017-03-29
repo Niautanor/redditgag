@@ -17,7 +17,7 @@ from praw.errors import OAuthInvalidToken
 
 from . import providers
 
-reddit = praw.Reddit(user_agent='redditgag - a 9gag like interface to reddit posts by /u/niautanor', log_requests=2, cache_timeout=120)
+reddit = praw.Reddit(user_agent='redditgag - a 9gag like interface to reddit posts by /u/niautanor', cache_timeout=120)
 
 reddit.set_oauth_app_info(
     client_id=settings.REDDIT_AUTH_CLIENT_ID,

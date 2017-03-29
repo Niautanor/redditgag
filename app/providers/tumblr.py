@@ -4,8 +4,11 @@ and I don't feel like getting the captions is worth the extra api requests.
 """
 
 import re
+import logging
 
 from .. import rest
+
+logger = logging.getLogger(__name__)
 
 name = "tumblr"
 icon = "https://assets.tumblr.com/images/favicons/favicon.ico"
@@ -28,8 +31,8 @@ def embed(submission, api=tumblr_api.get):
     if not match:
         return None
 
-    print("Getting tumblr info for id [%s,%s]" %
-            (match.group(1),match.group(2)))
+    logger.info("Getting tumblr info for id [%s, %s]",
+                (match.group(1),match.group(2)))
 
     posts = api(match.groups())['response']['posts']
 
@@ -43,7 +46,6 @@ def embed(submission, api=tumblr_api.get):
             'selftext' : info['question'] + "<br />" + info['answer']
         }
     elif info['type'] == 'text':
-        from pprint import pprint; pprint(info)
         return {
             'kind' : 'TEXT',
             'selftext' : info['body']

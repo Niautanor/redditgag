@@ -9,8 +9,11 @@ also send api requests for direct links
 """
 
 import re
+import logging
 
 from .. import rest
+
+logger = logging.getLogger(__name__)
 
 name = "imgur"
 icon = "https://s.imgur.com/images/favicon-32x32.png"
@@ -32,7 +35,7 @@ def embed(submission, api=imgur_api.get):
     match = imgur_regex.search(submission.url)
     if not match:
         if domain_regex.search(submission.url) is not None:
-            print("fuck %s" % submission.url)
+            logger.warn("Unsupported imgur url %s", submission.url)
             return {
                 'kind' : 'SORRY',
                 'sorrytext' :
@@ -41,7 +44,7 @@ def embed(submission, api=imgur_api.get):
             }
         return None
 
-    print("Getting imgur info for id %s" % match.group(2))
+    logger.info("Getting imgur info for id %s", match.group(2))
 
     kind = 'image'
     if match.group(1) == 'gallery':
