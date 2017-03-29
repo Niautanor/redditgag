@@ -1,3 +1,4 @@
+import os
 import types
 import functools
 
@@ -26,7 +27,7 @@ def testUrlBasedProvider(
 
 def addUrlProviderTestCase(cls, provider):
     name = provider.__name__
-    dataFile = "test_data/{0}.json".format(name)
+    dataFile = os.path.join("test_data", "{0}.json".format(name))
     funcName = "test{0}".format(name.title())
     # I would like to use functools.partial like this
     # func = functools.partial(testUrlBasedProvider, provider=provider)
