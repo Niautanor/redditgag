@@ -42,6 +42,8 @@
       - [x] personalized front page
       - [ ] voting
     - [ ] support other sorting methods beside best (e.g. new, top)
+    - [ ] support user overviews (probably easy if I implement support for other
+          sorting methods generically enough)
   - fixed
     - [x] rethink the caching thing
       - The background here is that most of the providers will work with the same
@@ -59,8 +61,8 @@
 - general issues
   - [x] deploy the application on a publicly accessible server
     - https://redditgag.baguette.management/
-  - [ ] create some unit tests to ensure that the correct embeddables are
+  - [x] create some unit tests to ensure that the correct embeddables are
     returned. This was mostly added to this list because refactoring is scary
     and I don't feel safe unless I have automated regression tests.
-  - [ ] figure out how to log properly. Printing to stdout is apparently frowned
+  - [x] figure out how to log properly. Printing to stdout is apparently frowned
     upon in an wsgi environment
