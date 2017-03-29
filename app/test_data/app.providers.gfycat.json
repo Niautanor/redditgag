@@ -1,0 +1,76 @@
+[
+  {
+    "api_params": "DefiniteFearlessDinosaur",
+    "api_result": {
+      "gfyItem": {
+        "copyrightClaimaint": null,
+        "createDate": "1490717445",
+        "description": null,
+        "dislikes": null,
+        "dynamo": null,
+        "extraLemmas": null,
+        "frameRate": "60",
+        "fullDomainWhitelist": [],
+        "fullGeoWhitelist": [],
+        "gfyId": "definitefearlessdinosaur",
+        "gfyName": "DefiniteFearlessDinosaur",
+        "gfyNumber": "269290508",
+        "gifSize": "276487",
+        "gifUrl": "https://zippy.gfycat.com/DefiniteFearlessDinosaur.gif",
+        "height": "148",
+        "iframeProfileImageVisible": true,
+        "languageText": null,
+        "likes": null,
+        "max2mbGif": "https://thumbs.gfycat.com/DefiniteFearlessDinosaur-small.gif",
+        "max5mbGif": "https://thumbs.gfycat.com/DefiniteFearlessDinosaur-size_restricted.gif",
+        "md5": "379d5407075e279a4e2e368f699e003d",
+        "mjpgUrl": "https://thumbs.gfycat.com/DefiniteFearlessDinosaur.mjpg",
+        "mobilePosterUrl": "https://thumbs.gfycat.com/DefiniteFearlessDinosaur-mobile.jpg",
+        "mobileUrl": "https://thumbs.gfycat.com/DefiniteFearlessDinosaur-mobile.mp4",
+        "mp4Size": "55648",
+        "mp4Url": "https://zippy.gfycat.com/DefiniteFearlessDinosaur.mp4",
+        "nsfw": "0",
+        "numFrames": "863",
+        "posterUrl": "https://thumbs.gfycat.com/DefiniteFearlessDinosaur-poster.jpg",
+        "published": "0",
+        "redditId": null,
+        "redditIdText": null,
+        "sar": null,
+        "source": "1",
+        "subreddit": null,
+        "tags": [
+          "Dashboard",
+          "mildlyinfuriating",
+          "pcmasterrace"
+        ],
+        "thumb100PosterUrl": "https://thumbs.gfycat.com/DefiniteFearlessDinosaur-thumb100.jpg",
+        "thumb360PosterUrl": "https://thumbs.gfycat.com/DefiniteFearlessDinosaur-thumb360.jpg",
+        "thumb360Url": "https://thumbs.gfycat.com/DefiniteFearlessDinosaur-360.mp4",
+        "title": null,
+        "url": null,
+        "userName": "anonymous",
+        "userTags": null,
+        "views": 17767,
+        "viewsNewEpoch": null,
+        "webmSize": "365908",
+        "webmUrl": "https://zippy.gfycat.com/DefiniteFearlessDinosaur.webm",
+        "webpUrl": "https://thumbs.gfycat.com/DefiniteFearlessDinosaur.webp",
+        "width": "376"
+      }
+    },
+    "expected": {
+      "kind": "VIDEO",
+      "sources": [
+        {
+          "mime": "video/webm",
+          "url": "https://zippy.gfycat.com/DefiniteFearlessDinosaur.webm"
+        },
+        {
+          "mime": "video/mp4",
+          "url": "https://zippy.gfycat.com/DefiniteFearlessDinosaur.mp4"
+        }
+      ]
+    },
+    "url": "https://gfycat.com/DefiniteFearlessDinosaur"
+  }
+]

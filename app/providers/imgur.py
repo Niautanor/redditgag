@@ -28,7 +28,7 @@ headers = {
 
 imgur_api = rest.Rest(endpoint, headers=headers)
 
-def embed(submission):
+def embed(submission, api=imgur_api.get):
     match = imgur_regex.search(submission.url)
     if not match:
         if domain_regex.search(submission.url) is not None:
@@ -49,7 +49,7 @@ def embed(submission):
     elif match.group(1):
         kind = 'album'
 
-    info = imgur_api.get((kind, match.group(2)))['data']
+    info = api((kind, match.group(2)))['data']
 
     if 'images' in info:
         # TODO: catch gifvs that hide in albums

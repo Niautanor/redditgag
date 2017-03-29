@@ -23,7 +23,7 @@ params = {
 
 tumblr_api = rest.Rest(endpoint, params=params)
 
-def embed(submission):
+def embed(submission, api=tumblr_api.get):
     match = tumblr_regex.search(submission.url)
     if not match:
         return None
@@ -31,7 +31,7 @@ def embed(submission):
     print("Getting tumblr info for id [%s,%s]" %
             (match.group(1),match.group(2)))
 
-    posts = tumblr_api.get(match.groups())['response']['posts']
+    posts = api(match.groups())['response']['posts']
 
     assert len(posts) == 1, "Did not expect more than one tumblr post"
 

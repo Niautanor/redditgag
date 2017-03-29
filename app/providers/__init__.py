@@ -9,6 +9,7 @@ Currently the available modules are:
     youtube (for youtube links) (currently not implemented)
     gfycat (for gfycat links) (currently not implemented)
     imgur (for embedding not directly linked imgur images, albums and gifvs)
+    tumblr (for embedding tumblr content (albums, photos, answers, ...)
     sorry (for posts that couldn't be embedded by any provider)
 
 TODOs for the future include making this list dynamic so that you only have to

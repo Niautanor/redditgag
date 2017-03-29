@@ -15,11 +15,11 @@ deviantart_regex = re.compile(r'^https?://(?:fav\.me/.*|sta\.sh/.*|(?:.+\.)?devi
 image_regex = re.compile(r'\.(?:jpe?g|gif|png|svg)$', re.IGNORECASE)
 deviantart_api = rest.Rest("https://backend.deviantart.com/oembed?url=%s")
 
-def embed(submission):
+def embed(submission, api=deviantart_api.get):
     if not deviantart_regex.search(submission.url):
         return None
 
-    info = deviantart_api.get(submission.url)
+    info = api(submission.url)
     print("Got deviantart info %s" % info['author_name'])
     if info['type'] != 'photo':
         return {

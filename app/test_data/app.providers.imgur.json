@@ -1,0 +1,115 @@
+[
+  {
+    "api_params": [
+      "gallery",
+      "l0QPP"
+    ],
+    "api_result": {
+      "data": {
+        "account_id": 52077571,
+        "account_url": "NecrowomanX",
+        "comment_count": 8,
+        "cover": "AzZQa1y",
+        "cover_height": 3456,
+        "cover_width": 5184,
+        "datetime": 1490789586,
+        "description": null,
+        "downs": 6,
+        "favorite": false,
+        "id": "l0QPP",
+        "images": [
+          {
+            "account_id": null,
+            "account_url": null,
+            "animated": false,
+            "bandwidth": 12432056670,
+            "comment_count": null,
+            "datetime": 1490789369,
+            "description": null,
+            "downs": null,
+            "favorite": false,
+            "height": 3456,
+            "id": "AzZQa1y",
+            "in_gallery": false,
+            "is_ad": false,
+            "link": "http://i.imgur.com/AzZQa1y.jpg",
+            "nsfw": null,
+            "points": null,
+            "score": null,
+            "section": null,
+            "size": 3729990,
+            "tags": [],
+            "title": null,
+            "type": "image/jpeg",
+            "ups": null,
+            "views": 3333,
+            "vote": null,
+            "width": 5184
+          },
+          {
+            "account_id": null,
+            "account_url": null,
+            "animated": false,
+            "bandwidth": 10378465665,
+            "comment_count": null,
+            "datetime": 1490789310,
+            "description": null,
+            "downs": null,
+            "favorite": false,
+            "height": 3456,
+            "id": "0lkbbNS",
+            "in_gallery": false,
+            "is_ad": false,
+            "link": "http://i.imgur.com/0lkbbNS.jpg",
+            "nsfw": null,
+            "points": null,
+            "score": null,
+            "section": null,
+            "size": 4033605,
+            "tags": [],
+            "title": null,
+            "type": "image/jpeg",
+            "ups": null,
+            "views": 2573,
+            "vote": null,
+            "width": 5184
+          }
+        ],
+        "images_count": 2,
+        "in_gallery": true,
+        "is_ad": false,
+        "is_album": true,
+        "layout": "blog",
+        "link": "http://imgur.com/a/l0QPP",
+        "nsfw": false,
+        "points": 0,
+        "privacy": "public",
+        "score": 0,
+        "section": "MechanicalKeyboards",
+        "tags": [],
+        "title": "/r/mechanicalkeyboards reddit giveaway, Leopold FC980C!",
+        "topic": "No Topic",
+        "topic_id": 29,
+        "ups": 6,
+        "views": 982,
+        "vote": null
+      },
+      "status": 200,
+      "success": true
+    },
+    "expected": {
+      "elements": [
+        {
+          "kind": "IMAGE",
+          "url": "http://i.imgur.com/AzZQa1y.jpg"
+        },
+        {
+          "kind": "IMAGE",
+          "url": "http://i.imgur.com/0lkbbNS.jpg"
+        }
+      ],
+      "kind": "ALBUM"
+    },
+    "url": "http://imgur.com/gallery/l0QPP"
+  }
+]

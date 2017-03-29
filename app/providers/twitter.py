@@ -16,7 +16,7 @@ twitter_regex = re.compile(r'^https?://((m|mobile|www)\.)?twitter\.com.*')
 twitter_tweet_regex = re.compile(r'^https?://((m|mobile|www)\.)?twitter\.com/(#\!/)?\w{1,15}/status/\d+.*', re.IGNORECASE)
 twitter_api = rest.Rest("https://publish.twitter.com/oembed?omit_script=true&url=%s")
 
-def embed(submission):
+def embed(submission, api=twitter_api):
     match = twitter_regex.match(submission.url)
     if not match:
         return None
@@ -28,7 +28,7 @@ def embed(submission):
             'sorrytext' : 'This Twitter link could not be embedded. Currently are only tweets supported.'
         }
 
-    info = twitter_api.get(submission.url)
+    info = api.get(submission.url)
     print("Got twitter info for url: %s" % info['url'])
 
     return {

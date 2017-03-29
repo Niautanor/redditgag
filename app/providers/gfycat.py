@@ -12,7 +12,7 @@ gfycat_regex = re.compile(r'^https?:\/\/gfycat.com\/(\w+)(?:\.gif)?', re.IGNOREC
 # cache for a day
 gfycat_api = rest.Rest("https://gfycat.com/cajax/get/%s")
 
-def embed(submission):
+def embed(submission, api=gfycat_api.get):
     # extract gfy id from url
     match = gfycat_regex.match(submission.url)
     if not match:
@@ -20,7 +20,7 @@ def embed(submission):
 
     # get info from gfycat api
     print("Getting gfycat info")
-    info = gfycat_api.get(match.group(1))['gfyItem']
+    info = api(match.group(1))['gfyItem']
 
     return {
         'kind' : 'VIDEO',
